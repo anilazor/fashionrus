@@ -9,7 +9,7 @@ const fashionUrl = "https://kea-alt-del.dk/t7/api/products";
 const data = await fetch(fashionUrl).then((res) => res.json());
 console.log(data);
 import Layout from "../layouts/Layout.astro";
-import css from "../src/css/style.css";
+import css from "../public/css/style.css";
 ---
 
 <Layout>
