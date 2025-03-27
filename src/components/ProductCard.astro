@@ -5,59 +5,86 @@ const data = await fetch(fashionUrl).then((res) => res.json());
 console.log(data);
 ---
 
-<article>
-  <a href="#">
+<a href="#">
+  <article>
     <img
       src=`https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`
       alt="Produktbillede"
       class="product-image"
     />
     <label>{product.discount}% sale!</label>
-    <div>
-      <h4>{product.brandname} – {product.productdisplayname}</h4>
-
-      <h3>{product.price} ,-</h3>
+    <div class="product-info">
+      <div class="product-title">
+        <h4>{product.productdisplayname}</h4>
+      </div>
+      <div class="product-price">
+        <h4>{product.price} ,-</h4>
+      </div>
     </div>
-  </a>
-</article>
+  </article>
 
-<style>
-  article {
-    position: relative;
-    display: flex;
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    border: solid 1px rgb(255, 255, 255);
-    box-shadow: 0px 4px 10px 2px #00000045;
-    height: 100%;
-    margin: 0 auto;
-  }
+  <style>
+    article {
+      justify-content: baseline;
+      align-items: baseline;
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      position: relative;
+      background-color: rgb(226, 226, 226);
+      border-radius: 5px;
+      border: solid 1px rgb(255, 255, 255);
+      box-shadow: 0px 4px 10px 2px #00000045;
+      height: 100%;
+      max-height: 450px;
+      max-width: 250px;
+    }
 
-  article:hover {
-    filter: drop-shadow(16px 16px 20px white);
-    filter: opacity(80%);
-  }
+    article:hover {
+      filter: drop-shadow(16px 16px 20px white);
+      filter: opacity(80%);
+    }
 
-  div {
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-  }
+    .product-info {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0.6rem;
+    }
 
-  img {
-    border-radius: 5px;
-  }
+    .product-title {
+      min-height: 48px;
+    }
 
-  label {
-    position: absolute;
-    left: -1px;
-    top: -1px;
-    font-family: "Roboto Mono";
-    font-size: 14px;
-    background-color: rgb(255, 214, 243);
-    box-shadow: 0px 2px 4px 0px #00000045;
-    border-radius: 5px;
-    padding: 0.5rem;
-    width: 100px;
-  }
-</style>
+    .product-price {
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    .product-price > h4 {
+      font-weight: 800;
+      color: black;
+      font-size: 14px;
+    }
+
+    img {
+      border-radius: 5px;
+    }
+
+    label {
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      font-family: "Roboto Mono";
+      font-size: 14px;
+      background-color: rgb(255, 214, 243);
+      box-shadow: 0px 2px 4px 0px #00000045;
+      border-radius: 5px;
+      padding: 0.5rem;
+      width: 100px;
+    }
+    @media (max-width: 700px) {
+      .product-title {
+        min-height: 72px;
+      }
+    }
+  </style>
+</a>
