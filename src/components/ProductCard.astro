@@ -1,0 +1,63 @@
+---
+const { product } = Astro.props;
+const fashionUrl = "https://kea-alt-del.dk/t7/api/products";
+const data = await fetch(fashionUrl).then((res) => res.json());
+console.log(data);
+---
+
+<article>
+  <a href="#">
+    <img
+      src=`https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`
+      alt="Produktbillede"
+      class="product-image"
+    />
+    <label>{product.discount}% sale!</label>
+    <div>
+      <h4>{product.brandname} – {product.productdisplayname}</h4>
+
+      <h3>{product.price} ,-</h3>
+    </div>
+  </a>
+</article>
+
+<style>
+  article {
+    position: relative;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: solid 1px rgb(255, 255, 255);
+    box-shadow: 0px 4px 10px 2px #00000045;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  article:hover {
+    filter: drop-shadow(16px 16px 20px white);
+    filter: opacity(80%);
+  }
+
+  div {
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+  }
+
+  img {
+    border-radius: 5px;
+  }
+
+  label {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    font-family: "Roboto Mono";
+    font-size: 14px;
+    background-color: rgb(255, 214, 243);
+    box-shadow: 0px 2px 4px 0px #00000045;
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 100px;
+  }
+</style>

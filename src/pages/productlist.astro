@@ -1,0 +1,24 @@
+---
+//@ts-nocheck
+const { product } = Astro.props;
+import Header from "../components/Header.astro";
+import ListView from "../components/ListView.astro";
+import ProductCard from "../components/ProductCard.astro";
+import Filters from "../components/Filters.astro";
+const fashionUrl = "https://kea-alt-del.dk/t7/api/products";
+const data = await fetch(fashionUrl).then((res) => res.json());
+console.log(data);
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <Header />
+  <div class="hl"></div>
+
+  <h2>Produktliste</h2>
+  <Filters />
+
+  <main>
+    <ListView> {data.map((product) => <ProductCard {product} />)} </ListView>
+  </main>
+</Layout>
